@@ -11,4 +11,16 @@ export type Article = {
   authorId: string;
   createdAt: string;
   updatedAt: string;
+  slug: string;
+};
+
+export type Category = {
+  id: string;
+  name: string;
+  description: string;
+  published: boolean;
+  createdAt: string;
+  updatedAt: string;
+  slug: string;
+  articles?: Article[];
 };

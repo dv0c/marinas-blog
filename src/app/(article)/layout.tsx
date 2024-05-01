@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import { Navigation } from "@/components/Navigation";
 import { FC } from "react";
 
 interface ArticleLayoutProps {
@@ -5,7 +7,12 @@ interface ArticleLayoutProps {
 }
 
 const ArticleLayout: FC<ArticleLayoutProps> = ({ children }) => {
-  return <main className="md:p-10 bg-gray-300/20">{children}</main>;
+
+  return <>
+    <Navigation />
+    <main className="md:p-10">{children}</main>
+    <Footer />
+  </>
 };
 
 export default ArticleLayout;

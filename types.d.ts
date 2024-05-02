@@ -12,6 +12,12 @@ export type Article = {
   createdAt: string;
   updatedAt: string;
   slug: string;
+  Category: {
+    name: string;
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  }
 };
 
 export type Category = {

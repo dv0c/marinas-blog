@@ -9,13 +9,15 @@ interface ArticleProps {
 }
 
 const Article: FC<ArticleProps> = ({ data }) => {
+    console.log(data);
+    
     return <article>
         <Link className='flex group items-center justify-between' href={'/' + data.slug}>
             <div className='flex flex-col gap-3'>
                 <div className='flex items-center gap-3'>
                     <span className='text-sm text-muted-foreground font-semibold'>{formatDate(data.createdAt)}</span>
                     <span>-</span>
-                    <span className='text-muted-foreground text-sm font-semibold'>#minimalistic</span>
+                    <span className='text-muted-foreground text-sm font-semibold'>#{data.Category?.name ? data.Category.name : 'uncategorized'}</span>
                 </div>
                 <div className='space-y-3'>
                     <h1 className='font-semibold text-md md:text-xl max-w-xl group-hover:underline'>{data.title}</h1>

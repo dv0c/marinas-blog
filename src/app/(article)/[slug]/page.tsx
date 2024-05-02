@@ -1,3 +1,4 @@
+import { formatDate } from "@/helpers/date";
 import { getArticle } from "@/helpers/fetcher";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -12,24 +13,35 @@ interface pageProps {
 const page: FC<pageProps> = async ({ params }) => {
   const { slug } = params;
   const article = await getArticle(slug);
+
   if (!article) return notFound();
   return (
-    <div className="md:max-w-4xl md:border md:rounded-xl dark:bg-black bg-white shadow mx-auto p-3 md:p-10 space-y-5">
-      <div className="space-y-3 border-b pb-5">
-        <h1 className="md:text-4xl text-3xl font-bold">{article.title}</h1>
-        <p className="text-muted-foreground ">{article.description}</p>
+    <div>
+      <div className="max-w-6xl mx-auto p-5 md:p-0">
+        <div className="flex items-center gap-10 justify-center flex-col">
+          <p className="text-muted-foreground">
+            {formatDate(article.createdAt)}
+          </p>
+          <h1 className="text-3xl md:text-5xl text-center">{article.title}</h1>
+          <p className="text-center text-sm md:text-base text-muted-foreground">{article.description}</p>
+          <div className="flex gap-3 items-center">
+            <Image className="object-cover rounded-full"
+              src={article.author.image}
+              alt={article.author.name}
+              width={40}
+              height={40}
+            />
+            <div className="flex text-xs flex-col">
+              <h3>{article.author.name}</h3>
+              <p>Administrator</p>
+            </div>
+          </div>
+          <Image width={1920} height={1080} className="object-cover h-[50vh] md:h-[75vh] max-h-[800px] rounded-lg" src={article.thumbnail || "/placeholder.png"} alt={article.title} />
+        </div>
       </div>
-      <Image
-        className="object-cover w-full h-full max-h-[70vh] bg-gray-400 rounded-lg overflow-hidden"
-        alt="image"
-        src={article.thumbnail || "/placeholder.png"}
-        width={1920}
-        height={1080}
-      />
-      <div
-        className="prose-base md:prose-xl"
-        dangerouslySetInnerHTML={{ __html: article.html }}
-      />
+      <div className="mt-10 md:mt-28">
+        <div className="prose initial-letter prose-lg px-8 md:p-0 mx-auto" dangerouslySetInnerHTML={{ __html: article.html }}></div>
+      </div>
     </div>
   );
 };

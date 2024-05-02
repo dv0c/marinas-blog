@@ -11,7 +11,7 @@ export async function getArticle(slug: string) {
     .then((res) => res?.data)
     .catch(() => null);
 
-  return data;
+  return data;  
 }
 
 export async function getArticles() {

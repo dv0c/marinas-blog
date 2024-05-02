@@ -74,3 +74,9 @@
       @apply bg-background text-foreground;
     }
   }
+
+  .initial-letter::first-letter {
+    @apply text-5xl font-semibold;
+    initial-letter: 2;
+    margin-left: 2;
+  }

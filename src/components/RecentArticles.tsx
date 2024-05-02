@@ -1,9 +1,10 @@
 import { getArticles } from "@/helpers/fetcher"
 import Article from "./Article"
 
+export const revalidate = 1000
+
 const RecentArticles = async () => {
     const posts = await getArticles()
-    console.log(posts);
     
     return <div className="max-w-4xl mx-auto pt-14">
         <h1 className="text-sm md:text-md font-semibold text-muted-foreground">Recent Publications</h1>

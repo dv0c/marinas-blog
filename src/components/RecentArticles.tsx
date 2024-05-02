@@ -1,7 +1,7 @@
 import { getArticles } from "@/helpers/fetcher"
 import Article from "./Article"
 
-export const revalidate = 1000
+export const revalidate = 0
 
 const RecentArticles = async () => {
     const posts = await getArticles()

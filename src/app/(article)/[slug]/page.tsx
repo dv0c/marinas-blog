@@ -40,7 +40,7 @@ const page: FC<pageProps> = async ({ params }) => {
         </div>
       </div>
       <div className="mt-10 md:mt-28">
-        <div className="prose initial-letter prose-lg px-8 md:p-0 mx-auto" dangerouslySetInnerHTML={{ __html: article.html }}></div>
+        <div className="prose initial-letter dark:prose-invert prose-lg px-8 md:p-0 mx-auto" dangerouslySetInnerHTML={{ __html: article.html }}></div>
       </div>
     </div>
   );
